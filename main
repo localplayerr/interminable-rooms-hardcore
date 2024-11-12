@@ -1,0 +1,240 @@
+local SyncHelper = loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAcceleration/Comet-Development/refs/heads/main/Doors/Utility/SyncHelper.lua"))()
+
+local rooms = game.Workspace.GeneratedRooms
+local tweenservice = game:GetService("TweenService")
+
+
+
+warn("started")
+
+-- functions
+
+function spawn(model,back)
+	
+	local entity = game:GetObjects(model)[1].Part
+
+    entity.Anchored = true
+	
+    local start = game.Workspace.Start.MainDoor.OpenDoorP.CFrame
+
+    if back == true then
+        start = rooms:GetChildren()[#rooms:GetChildren()].EndPart.CFrame
+    end
+
+    entity.Parent = game.Workspace.Entities
+    entity.CFrame = start
+
+    print("Entity spawned")
+
+    return entity
+
+end
+
+function rebound(entity,back,speed)
+    
+    print("function")
+
+    local start = 1
+    local step = 1
+
+    if back == true then
+        start = #rooms:GetChildren()
+        step = -1
+    end
+
+    while true do
+
+        local room = rooms:GetChildren()[start]
+
+        if back == true and room.Name == "Room 1" then
+            print("room name is 1 breaking")
+            break
+        end
+
+        print(room)
+
+    	local goal = {CFrame = room.EndPart.CFrame}
+	
+    	local tween = TweenInfo.new(speed,Enum.EasingStyle.Linear)
+	
+    	local animation = tweenservice:Create(entity,tween,goal)
+	
+    	animation:Play()
+    	print("entity is now on ".. room.Name)
+
+	    wait(speed)
+
+        if start == #rooms:GetChildren() and back == false or start == 1 and back == true then
+            break
+        end
+
+        start += step
+
+    end
+
+    return 0
+
+end
+
+
+function center(entity,speed)
+
+    print("center")
+    
+    local lastroom = rooms:GetChildren()[#rooms:GetChildren()]
+   
+    local goal = {CFrame = lastroom.center.CFrame}
+	
+    local tween = TweenInfo.new(speed,Enum.EasingStyle.Linear)
+	
+    local animation = tweenservice:Create(entity,tween,goal)
+	
+    animation:Play()
+
+    return 0
+
+end
+
+-- entity functions
+
+function a25()
+    local entit = spawn("rbxassetid://113054760482223", false)
+    rebound(entit, false, 1)
+    entit:Destroy()
+end
+
+function a40()
+    local entit = spawn("rbxassetid://137151647075058", false)
+    rebound(entit, false, 0.15)
+    center(entit,3)
+    wait(2)
+    rebound(entit, true, 0.15)
+	wait(2)
+    rebound(entit, false, 0.15)
+    wait(2)
+    entit:Destroy()
+end
+
+
+function a75()
+	local can
+	can = rooms.ChildAdded:connect(function()
+		local entit = spawn("rbxassetid://116238342072931", true)
+		center(entit, 0)
+        wait(5)
+		rebound(entit, true, 1)
+		rebound(entit, false, 1)
+		entit:Destroy()
+        can:Disconnect()
+	end)
+end
+
+function a90()
+    print("function")
+	local can
+    can = rooms.ChildAdded:connect(function()
+        print("func")
+	    local connec
+	    local entit = spawn("rbxassetid://126386873440560",false)
+	    center(entit,0)
+        can:Disconnect()
+	    wait(2)
+	    entit.light.Enabled = true
+	    entit.atta.face.Enabled = true
+	entit.atta.particle.Enabled = true
+        entit.sc.Playing = true
+	        connec = game.Players.LocalPlayer.Character.Humanoid.Running:connect(function()
+            game.Players.LocalPlayer.Character.Humanoid.Health = 0
+	    end)
+        wait(15)
+        connec:Disconnect()
+        entit.sc.Playing = false
+        entit.ds:Play()
+        rebound(entit, true, 0)
+        wait(4)
+        entit:Destroy()
+    end)
+end
+
+function a115()
+	local e = spawn("rbxassetid://72471289826746",false)
+	e.Attachment.facechange.Enabled = true
+	for i = 0 , 4 , 1 do
+        rebound(e, false, 0.05)
+	    wait(3)
+	    rebound(e, true, 0.05)
+	    wait(40)
+    end
+	e:Destroy()
+end
+
+-- entity loops
+
+local a40l = false
+local a25l = false
+local a75l = false
+
+function a25loop()
+    if a25l == false then
+        a25l = true
+    else
+        return
+    end
+    print("Loop")
+    while true do
+        a25()
+         print(SyncHelper:generateFullRandom(25,100,#rooms:GetChildren()).. " seconds until a25")
+        wait(SyncHelper:generateFullRandom(25,100,#rooms:GetChildren()))
+    end
+end
+
+function a40loop()
+    if a40l == false then
+        a40l = true
+    else
+        return
+    end
+    print("Loop")
+    while true do
+        a40()
+        print(SyncHelper:generateFullRandom(70,150,#rooms:GetChildren()).. " seconds until a40")
+        wait(SyncHelper:generateFullRandom(70,150,#rooms:GetChildren()))
+    end
+end
+
+
+function a75loop()
+    if a75l == false then
+        a75l = true
+    else
+        return
+    end
+    print("Loop")
+    while true do
+        a75()
+         print(SyncHelper:generateFullRandom(40,130,#rooms:GetChildren()).. " seconds until a70")
+        wait(SyncHelper:generateFullRandom(40,130,#rooms:GetChildren()))
+    end
+end
+
+-- other
+
+rooms.ChildAdded:Connect(function(added)
+      if #rooms:GetChildren() >= 25 then
+           print("detected room 25")
+           task.wait(10)
+           task.spawn(a25loop)
+      end
+      
+      if #rooms:GetChildren() >= 40 then
+           print("detected room 40")
+           task.wait(10)
+           task.spawn(a40loop)
+      end
+
+      if #rooms:GetChildren() >= 70 then
+           print("detected room 70")
+           task.spawn(a75loop)
+      end
+
+end)
