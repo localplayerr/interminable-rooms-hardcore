@@ -1,7 +1,7 @@
 local scripts = {}
 	function scripts.a115change(f)
-		local a1 = f.atta.A1
-		local a2 = f.atta.A2
+		local a1 = f.atta.A1.ImageLabel
+		local a2 = f.atta.A2.ImageLabel
 
 		while true do
 			wait(0.3)
