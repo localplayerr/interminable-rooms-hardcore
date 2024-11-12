@@ -1,5 +1,5 @@
-local a1 = e.Attachment.A1
-local a2 = e.Attachment.A2
+local a1 = e.atta.A1
+local a2 = e.atta.A2
 
 while true do
 	wait(0.3)
