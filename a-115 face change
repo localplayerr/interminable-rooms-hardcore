@@ -1,5 +1,5 @@
 local scripts = {}
-	function a115change(f)
+	function scripts.a115change(f)
 		local a1 = f.atta.A1
 		local a2 = f.atta.A2
 
