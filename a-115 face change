@@ -1,29 +1,30 @@
-print(e)
-local a1 = e.atta.A1
-local a2 = e.atta.A2
+function c(f)
+	local a1 = f.atta.A1
+	local a2 = f.atta.A2
 
-while true do
-	wait(0.3)
-	a1.Image = "http://www.roblox.com/asset/?id=18589892289"
-	wait(0.1)
-	a2.Image = "http://www.roblox.com/asset/?id=15767935719"
-	wait(0.2)
-	a1.Image = "http://www.roblox.com/asset/?id=13325548735"
-	wait(0.3)
-	a2.Image = "http://www.roblox.com/asset/?id=14581009610"
-	wait(0.1)
-	a1.Image = "http://www.roblox.com/asset/?id=15873940077"
-	-- r
-	wait(0.2)
-	a2.Image = "http://www.roblox.com/asset/?id=18589892289"
-	wait(0.3)
-	a1.Image = "http://www.roblox.com/asset/?id=15767935719"
-	wait(0.1)
-	a2.Image = "http://www.roblox.com/asset/?id=13325548735"
-	wait(0.2)
-	a1.Image = "http://www.roblox.com/asset/?id=14581009610"
-	wait(0.3)
-	a2.Image = "http://www.roblox.com/asset/?id=15873940077"
+	while true do
+		wait(0.3)
+		a1.Image = "http://www.roblox.com/asset/?id=18589892289"
+		wait(0.1)
+		a2.Image = "http://www.roblox.com/asset/?id=15767935719"
+		wait(0.2)
+		a1.Image = "http://www.roblox.com/asset/?id=13325548735"
+		wait(0.3)
+		a2.Image = "http://www.roblox.com/asset/?id=14581009610"
+		wait(0.1)
+		a1.Image = "http://www.roblox.com/asset/?id=15873940077"
+		-- r
+		wait(0.2)
+		a2.Image = "http://www.roblox.com/asset/?id=18589892289"
+		wait(0.3)
+		a1.Image = "http://www.roblox.com/asset/?id=15767935719"
+		wait(0.1)
+		a2.Image = "http://www.roblox.com/asset/?id=13325548735"
+		wait(0.2)
+		a1.Image = "http://www.roblox.com/asset/?id=14581009610"
+		wait(0.3)
+		a2.Image = "http://www.roblox.com/asset/?id=15873940077"
+	end
 end
 
 
