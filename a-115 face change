@@ -25,6 +25,7 @@ local scripts = {}
 			a1.Image = "http://www.roblox.com/asset/?id=14581009610"
 			wait(0.3)
 			a2.Image = "http://www.roblox.com/asset/?id=15873940077"
+			continue
 		end
 	end
 
