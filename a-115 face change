@@ -28,7 +28,20 @@ local scripts = {}
 		end
 	end
 
-	function scripts.a5move(f)
+	function scripts.a5scripts(f)
+		
+		local delayt = true
+		f.damage.Touched:Connect(function(touch)
+			local humanoid = touch.Parent:FindFirstChild("Humanoid")
+			if humanoid and delayt == true then
+				delayt = false
+				humanoid:TakeDamage(40)
+				wait(1)
+				delayt = true
+			end 
+		end)
+
+		
 		-- note its not my script because im too lazy for made my own
 		local CurrentPart = nil
 		local MaxInc = 30
