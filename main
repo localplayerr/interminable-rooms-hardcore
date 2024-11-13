@@ -1,13 +1,31 @@
 local SyncHelper = loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAcceleration/Comet-Development/refs/heads/main/Doors/Utility/SyncHelper.lua"))()
+local scripts = loadstring(game:HttpGet("https://raw.githubusercontent.com/localplayerr/interminable-rooms-hardcore/refs/heads/main/a-115%20face%20change"))()
 
 local rooms = game.Workspace.GeneratedRooms
 local tweenservice = game:GetService("TweenService")
 
 
 
+-- SyncHelper:generateFullRandom(1, 3, os.time())
+
 warn("started")
 
 -- functions
+
+function message(message,tim)
+	local ui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
+	local gui = Instance.new("TextLabel",ui)
+	gui.Position = UDim2.new(0.319,0,0.783,0)
+	gui.Size = UDim2.new(0,554,0,50)
+	gui.Text = message
+	gui.BackgroundTransparency = 1
+	gui.TextColor3 = Color3.fromRGB(230, 230, 230)
+	gui.TextSize = 55
+	gui.Font = Enum.Font.SourceSansBold
+	gui.FontFace.Weight = Enum.FontWeight.Bold
+	wait(tim)
+	ui:Destroy()
+end
 
 function spawn(model,back)
 	
@@ -101,6 +119,7 @@ function a25()
     local entit = spawn("rbxassetid://113054760482223", false)
     rebound(entit, false, 1)
     entit:Destroy()
+	return 0
 end
 
 function a40()
@@ -113,6 +132,7 @@ function a40()
     rebound(entit, false, 0.15)
     wait(2)
     entit:Destroy()
+	return 0
 end
 
 
@@ -126,6 +146,7 @@ function a75()
 		rebound(entit, false, 1)
 		entit:Destroy()
         can:Disconnect()
+	return 0
 	end)
 end
 
@@ -153,12 +174,13 @@ function a90()
         rebound(entit, true, 0)
         wait(4)
         entit:Destroy()
+	return 0
     end)
 end
 
 function a115()
 	local e = spawn("rbxassetid://72471289826746",false)
-	e.Attachment.facechange.Enabled = true
+    scripts.a115change(e)
 	for i = 0 , 4 , 1 do
         rebound(e, false, 0.05)
 	    wait(3)
@@ -166,6 +188,7 @@ function a115()
 	    wait(40)
     end
 	e:Destroy()
+	return 0
 end
 
 -- entity loops
@@ -173,6 +196,8 @@ end
 local a40l = false
 local a25l = false
 local a75l = false
+local a90l = false
+local a115l = false
 
 function a25loop()
     if a25l == false then
@@ -182,9 +207,9 @@ function a25loop()
     end
     print("Loop")
     while true do
-        a25()
-         print(SyncHelper:generateFullRandom(25,100,#rooms:GetChildren()).. " seconds until a25")
-        wait(SyncHelper:generateFullRandom(25,100,#rooms:GetChildren()))
+        task.wait(a25())
+         print(SyncHelper:generateFullRandom(25,70,#rooms:GetChildren()).. " seconds until a25")
+        wait(SyncHelper:generateFullRandom(25,70,#rooms:GetChildren()))
     end
 end
 
@@ -196,7 +221,7 @@ function a40loop()
     end
     print("Loop")
     while true do
-        a40()
+        task.wait(a40())
         print(SyncHelper:generateFullRandom(70,150,#rooms:GetChildren()).. " seconds until a40")
         wait(SyncHelper:generateFullRandom(70,150,#rooms:GetChildren()))
     end
@@ -211,11 +236,41 @@ function a75loop()
     end
     print("Loop")
     while true do
-        a75()
+        task.wait(a75())
          print(SyncHelper:generateFullRandom(40,130,#rooms:GetChildren()).. " seconds until a70")
         wait(SyncHelper:generateFullRandom(40,130,#rooms:GetChildren()))
     end
 end
+
+
+function a90loop()
+    if a90l == false then
+        a90l = true
+    else
+        return
+    end
+    print("Loop")
+    while true do
+        task.wait(a90())
+         print(SyncHelper:generateFullRandom(90,130,#rooms:GetChildren()).. " seconds until a70")
+        wait(SyncHelper:generateFullRandom(90,130,#rooms:GetChildren()))
+    end
+end
+
+function a115loop()
+    if a115l == false then
+        a115l = true
+    else
+        return
+    end
+    print("Loop")
+    while true do
+        task.wait(a115())
+         print(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()).. " seconds until a70")
+        wait(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()))
+    end
+end
+
 
 -- other
 
@@ -236,5 +291,22 @@ rooms.ChildAdded:Connect(function(added)
            print("detected room 70")
            task.spawn(a75loop)
       end
+	
+	if #rooms:GetChildren() >= 90 then
+           print("detected room 90")
+		task.wait(10)
+           task.spawn(a90loop)
+      end
+
+	if #rooms:GetChildren() >= 115 then
+           print("detected room 115")
+		task.wait(10)
+           task.spawn(a115loop)
+      end
+
 
 end)
+
+message("HARDCORE ACTIVE",3)
+message("Made by dima_082ooo (LocalPlayer)",3)
+message("Good luck",5)
