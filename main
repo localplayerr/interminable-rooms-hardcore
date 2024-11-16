@@ -201,7 +201,7 @@ function center(entity,speed)
     
     local lastroom = rooms:GetChildren()[#rooms:GetChildren()]
    
-    local goal = {CFrame = lastroom.center278.CFrame - vector3.new(0,11,0)}
+    local goal = {CFrame = lastroom.center278.CFrame - Vector3.new(0,11,0)}
 	
     local tween = TweenInfo.new(speed,Enum.EasingStyle.Linear)
 	
