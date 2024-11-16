@@ -38,10 +38,10 @@ local scripts = {}
 				game:GetService('TweenService'):Create(game.Workspace.Camera,TweenInfo.new(0.2,Enum.EasingStyle.Quint,Enum.EasingDirection.Out,0,false,0),{CFrame = cam.CFrame*CFrame.Angles(0,0,math.rad(math.random(-clamp/2, clamp/2)))}):Play()
 				game.Players.LocalPlayer.Character.Humanoid.CameraOffset = Vector3.new(math.random(1 - clamp, clamp / 20), math.random(1 - clamp, clamp / 20), math.random(0 - clamp, clamp / 15)) / 55
 			
+			else
+
 			end
-		else
-			
-		end
+		end		
 	end
 
 return scripts
