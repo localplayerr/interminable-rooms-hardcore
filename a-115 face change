@@ -1,3 +1,4 @@
+print("scripts")
 local scripts = {}
 	function scripts.a115change(f)
 		local a1 = f.atta.A1.ImageLabel
