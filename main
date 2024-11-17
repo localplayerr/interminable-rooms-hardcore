@@ -7,7 +7,7 @@ local rooms = game.Workspace.GeneratedRooms
 local tweenservice = game:GetService("TweenService")
 local TextChatService = game:GetService("TextChatService")
 
-local ms = {"Good Luck","@dripocapy if you read this dont look in code","Yes im stole these tittles from doors hardcore","Dont ask why a-40 has yellow a-60 face","Always look away","Game.players.localplayer:Kick()","Have fun","Im add jumpscares soon"}
+local ms = {"Good Luck","@dripocapy if you read this dont look in code","Yes im stole these tittles from doors hardcore","Dont ask why a-40 has yellow a-60 face","Always look away","Game.players.localplayer:Kick()","Have fun","Im add jumpscares soon","Dont forget that a-90 exist",":Troll:","Error: line 188","Donate me for free admin :money:","a-25 already behind you"}
 
 
 
@@ -46,7 +46,7 @@ TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
 			Message.PrefixText = " <font color='#ff007c'>[Script owner]</font> " .. Message.PrefixText
 		end
 		if player.Name == "SILENCEHARDCORE8" then
-			Message.PrefixText = " <font color='#00b2ff'>[Random guy]</font> " .. Message.PrefixText
+			Message.PrefixText = " <font color='#00b2ff'>[Idea and textures helper]</font> " .. Message.PrefixText
 		end
 	end
 end
@@ -463,5 +463,5 @@ rooms.ChildAdded:Connect(function(added)
 end)
 
 message("HARDCORE ACTIVE",3)
-message("Made by dima_082ooo (LocalPlayer)",3)
+message("Made by dima_082ooo (main scripter) and SILENCEHARDCORE8 (textures helper)",3)
 message(ms[math.random(1,#ms)],5)
