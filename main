@@ -5,6 +5,7 @@ local scripts = loadstring(game:HttpGet("https://raw.githubusercontent.com/local
 
 local rooms = game.Workspace.GeneratedRooms
 local tweenservice = game:GetService("TweenService")
+local TextChatService = game:GetService("TextChatService")
 
 local ms = {"Good Luck","@dripocapy if you read this dont look in code","Yes im stole these tittles from doors hardcore","Dont ask why a-40 has yellow a-60 face","Always look away","Game.players.localplayer:Kick()","Have fun","Im add jumpscares soon"}
 
@@ -38,6 +39,17 @@ end
 
 _G.execution = true
 
+TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
+	if Message.TextSource then
+		local player = game.Players:GetPlayerByUserId(Message.TextSource.UserId)
+		if player.Name == "dimaalt4" or player.Name == "dima_082ooo" then
+			Message.PrefixText = " <font color='#ff007c'>[Script owner]</font> " .. Message.PrefixText
+		end
+		if player.Name == "SILENCEHARDCORE8" then
+			Message.PrefixText = " <font color='#00b2ff'>[Random guy]</font> " .. Message.PrefixText
+		end
+	end
+end
 
 function title(value,duration,sound,looped)
 	local screengui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
