@@ -105,7 +105,7 @@ end
 
 function shake(f,range,intensity)
 	while task.wait() do	
-		if f then	
+		if game.workspace.Entities:WaitForChild(f) then	
 			local dist = game.Players.LocalPlayer:DistanceFromCharacter(f.Position)					
 			local cam = workspace.Camera			
 			local clamp = math.clamp(1 + (intensity - 0.1)*(1-(dist/range)), 0.1, intensity)				
@@ -114,7 +114,7 @@ function shake(f,range,intensity)
 			game.Players.LocalPlayer.Character.Humanoid.CameraOffset = Vector3.new(math.random(1 - clamp, clamp / 20), math.random(1 - clamp, clamp / 20), math.random(0 - clamp, clamp / 15)) / 55
 			
 		else
-
+			
 		end
 	end		
 end
