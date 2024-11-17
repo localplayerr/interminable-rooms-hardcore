@@ -234,7 +234,9 @@ end
 
 function a25()
     local entit = spawn("rbxassetid://113054760482223", false)
-	task.spawn(shake(entit,750,25))
+	task.spawn(function()
+		shake(entit,750,25)
+	end) 
 	kill(entit,nil) 
     task.wait(rebound(entit, false, 1))
     entit:Destroy()
