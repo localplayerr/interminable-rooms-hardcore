@@ -217,9 +217,8 @@ end
 
 function a25()
     local entit = spawn("rbxassetid://113054760482223", false)
-	local sc = Instance.new("LocalScript",game.Players.LocalPlayer.PlayerScripts)
-	sc.Source = scripts.shake(entit,750,25)
-	kill(entit,nil)
+	task.spawn(scripts.shake(entit,750,25))
+	kill(entit,nil) 
     task.wait(rebound(entit, false, 1))
     entit:Destroy()
     return 0
