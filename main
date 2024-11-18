@@ -506,5 +506,5 @@ TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
 end
 
 message("HARDCORE ACTIVE",3)
-message("Made by dima_082ooo (main scripter) and SILENCEHARDCORE8 (textures helper)",3)
+message("Made by dima_082ooo (main scripter) and SILENCEHARDCORE8 (idea helper)",3)
 message(ms[math.random(1,#ms)],5)
