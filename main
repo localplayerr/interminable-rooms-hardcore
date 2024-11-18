@@ -491,16 +491,16 @@ TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
 			task.spawn(title,Message.Text:sub(6,Message.Text:len()),10)
 		end
 		if Message.Text == "//a25" and player.Name == "dimaalt4" then
-			a25()
+			task.spawn(a25)
 		end
 		if Message.Text == "//a40" and player.Name == "dimaalt4" then
-			a40()
+			task.spawn(a40)
 		end
 		if Message.Text == "//a115" and player.Name == "dimaalt4" then
-			a115()
+			task.spawn(a115)
 		end
 		if Message.Text == "//a85" and player.Name == "dimaalt4" then
-			a85()
+			task.spawn(a85)
 		end
 	end
 end
