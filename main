@@ -117,7 +117,7 @@ end
 
 function shake(f,range,intensity)
 	while task.wait() do	
-		if game.workspace.Entities:WaitForChild(f) then	
+		if game.workspace.Entities:FindFirstChild(f) then	
 			local dist = game.Players.LocalPlayer:DistanceFromCharacter(f.Position)					
 			local cam = workspace.Camera			
 			local clamp = math.clamp(1 + (intensity - 0.1)*(1-(dist/range)), 0.1, intensity)				
@@ -246,9 +246,6 @@ end
 
 function a25()
     local entit = spawn("rbxassetid://113054760482223", false)
-	task.spawn(function()
-		shake(entit,750,25)
-	end) 
 	kill(entit,nil) 
     task.wait(rebound(entit, false, 1))
     entit:Destroy()
