@@ -309,7 +309,7 @@ end
 
 function a115()
 	local e = spawn("rbxassetid://72471289826746",false)
-    task.spawn(scripts.a115change(e))
+    task.spawn(scripts.a115change , e)
 	for i = 0 , 4 , 1 do
         rebound(e, false, 0.05)
 	    task.wait(3)
