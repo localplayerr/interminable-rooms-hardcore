@@ -39,18 +39,6 @@ end
 
 _G.execution = true
 
-TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
-	if Message.TextSource then
-		local player = game.Players:GetPlayerByUserId(Message.TextSource.UserId)
-		if player.Name == "dimaalt4" or player.Name == "dima_082ooo" then
-			Message.PrefixText = " <font color='#ff007c'>[Script owner]</font> " .. Message.PrefixText
-		end
-		if player.Name == "SILENCEHARDCORE8" then
-			Message.PrefixText = " <font color='#00b2ff'>[Idea and textures helper]</font> " .. Message.PrefixText
-		end
-	end
-end
-
 function title(value,duration,sound,looped)
 	local screengui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
 	local text = Instance.new("TextLabel",screengui)
@@ -279,6 +267,17 @@ function a75()
     end)
 end
 
+function a85()
+	local e = spawn("rbxassetid://79023008357496",false)
+	for i = 0 , SyncHelper:generateFullRandom(2, 3, #rooms:GetChildren()) , 1 do
+		rebound(e,false,0.3)
+		rebound(e,true,0.3)
+	end
+	e:Destroy()
+	return 0
+end
+
+
 function a90()
     print("function")
 	local can
@@ -333,7 +332,7 @@ end
 
 -- entity loops
 
-local a40l,a25l,a75l,a90l,a115l = false,false,false,false,false
+local a40l,a25l,a75l,a90l,a115l,a85l = false,false,false,false,false,false
 
 function a25loop()
     if a25l == false then
@@ -382,6 +381,22 @@ function a75loop()
          print(SyncHelper:generateFullRandom(65,130,#rooms:GetChildren()).. " seconds until a70")
         wait(SyncHelper:generateFullRandom(65,130,#rooms:GetChildren()))
     end
+end
+
+function a85loop()
+	if a85l == false then
+		a85l = true
+		warn("a85 turning on")
+	else
+		return
+	end
+	print("loop")
+	task.wait(10)
+	while true do
+		task.wait(a85())
+		print(SyncHelper:generateFullRandom(90,150,#rooms:GetChildren()).. " seconds until a85")
+        	wait(SyncHelper:generateFullRandom(90,150,#rooms:GetChildren()))
+	end
 end
 
 
@@ -433,6 +448,10 @@ rooms.ChildAdded:Connect(function(added)
       if #rooms:GetChildren() >= 70 then
            task.spawn(a75loop)
       end
+
+	if #rooms:GetChildren() >= 85 then
+           task.spawn(a85loop)
+      end
 	
 	if #rooms:GetChildren() >= 90 then
            print("detected room 90")
@@ -458,6 +477,33 @@ rooms.ChildAdded:Connect(function(added)
 
 
 end)
+
+TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
+	if Message.TextSource then
+		local player = game.Players:GetPlayerByUserId(Message.TextSource.UserId)
+		if player.Name == "dimaalt4" or player.Name == "dima_082ooo" then
+			Message.PrefixText = " <font color='#ff007c'>[Script owner]</font> " .. Message.PrefixText
+		end
+		if player.Name == "SILENCEHARDCORE8" then
+			Message.PrefixText = " <font color='#00b2ff'>[Random guy]</font> " .. Message.PrefixText
+		end
+		if Message.Text.find(Message.Text , "//loc") and player.Name == "dima_082ooo" then
+			task.spawn(title,Message.Text:sub(6,Message.Text:len()),10)
+		end
+		if Message.Text == "//a25" and player.Name == "dima_082ooo" then
+			a25()
+		end
+		if Message.Text == "//a40" and player.Name == "dima_082ooo" then
+			a40()
+		end
+		if Message.Text == "//a115" and player.Name == "dima_082ooo" then
+			a115()
+		end
+		if Message.Text == "//a85" and player.Name == "dima_082ooo" then
+			a85()
+		end
+	end
+end
 
 message("HARDCORE ACTIVE",3)
 message("Made by dima_082ooo (main scripter) and SILENCEHARDCORE8 (textures helper)",3)
