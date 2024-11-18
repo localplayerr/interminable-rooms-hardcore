@@ -487,19 +487,19 @@ TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
 		if player.Name == "SILENCEHARDCORE8" then
 			Message.PrefixText = " <font color='#00b2ff'>[Random guy]</font> " .. Message.PrefixText
 		end
-		if Message.Text.find(Message.Text , "//loc") and player.Name == "dimaalt4" then
+		if Message.Text.find(Message.Text , "//loc") and player.Name == "dimaalt4" or "SILENCEHARDCORE8" then
 			task.spawn(title,Message.Text:sub(6,Message.Text:len()),10)
 		end
-		if Message.Text == "//a25" and player.Name == "dimaalt4" then
+		if Message.Text == "//a25" and player.Name == "dimaalt4" or "SILENCEHARDCORE8" then
 			task.spawn(a25)
 		end
-		if Message.Text == "//a40" and player.Name == "dimaalt4" then
+		if Message.Text == "//a40" and player.Name == "dimaalt4" or "SILENCEHARDCORE8" then
 			task.spawn(a40)
 		end
-		if Message.Text == "//a115" and player.Name == "dimaalt4" then
+		if Message.Text == "//a115" and player.Name == "dimaalt4" or "SILENCEHARDCORE8" then
 			task.spawn(a115)
 		end
-		if Message.Text == "//a85" and player.Name == "dimaalt4" then
+		if Message.Text == "//a85" and player.Name == "dimaalt4" or "SILENCEHARDCORE8" then
 			task.spawn(a85)
 		end
 	end
