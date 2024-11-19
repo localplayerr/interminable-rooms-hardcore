@@ -257,6 +257,7 @@ end
 
 function a40()
     local entit = spawn("rbxassetid://137151647075058", false)
+	kill(entit,nil)
     task.wait(rebound(entit, false, 0.15))
     center(entit,3)
     task.wait(2)
@@ -276,6 +277,7 @@ function a75()
         center(entit,0)
         can:Disconnect()
         task.wait(5)
+	kill(entit,nil)
         task.wait(rebound(entit, true, 0.5))
         entit:Destroy()
         return 0 
@@ -313,11 +315,12 @@ end
 function a115()
 	local e = spawn("rbxassetid://72471289826746",false)
     task.spawn(scripts.a115change(e))
+	kill(e,nil)
 	for i = 0 , 4 , 1 do
         rebound(e, false, 0.05)
 	    task.wait(3)
 	    rebound(e, true, 0.05)
-	    task.wait(10)
+	    task.wait(40)
     end
 	e:Destroy()
 	return 0
@@ -326,6 +329,7 @@ end
 function a130()
 	local e = spawn(nil,false)
 	task.wait(3)
+	kill(e)
 	for i = 0, SyncHelper:generateFullRandom(10,17,#rooms:GetChildren()) , 1 do
 		rebound(e, false, 0.015)
 		rebound(e, true, 0.015)
@@ -334,9 +338,20 @@ function a130()
 	return 0
 end
 
+function a160()
+	local e = spawn("rbxassetid://17508750627",false)
+	kill(e,nil)
+    rebound(e,false,0)
+	center(e,0)
+	task.wait(3)
+	rebound(e,true,0)
+    e:Destroy()
+end
+
+
 -- entity loops
 
-local a40l,a25l,a75l,a90l,a115l = false,false,false,false,false
+local a40l,a25l,a75l,a90l,a115l,a130l,a160l = false,false,false,false,false,false,false
 
 function a25loop()
     if a25l == false then
@@ -419,6 +434,35 @@ function a115loop()
     end
 end
 
+function a130loop()
+    if a130l == false then
+        a130l = true
+    else
+        return
+    end
+	task.wait(10)
+    print("Loop")
+    while true do
+        task.wait(a130())
+         print(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()).. " seconds until a130")
+        wait(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()))
+    end
+end
+
+function a160loop()
+    if a160l == false then
+        a160l = true
+    else
+        return
+    end
+	task.wait(10)
+    print("Loop")
+    while true do
+        task.wait(a130())
+         print(SyncHelper:generateFullRandom(200,270,#rooms:GetChildren()).. " seconds until a160")
+        wait(SyncHelper:generateFullRandom(200,270,#rooms:GetChildren()))
+    end
+end
 
 -- other
 
@@ -446,6 +490,16 @@ rooms.ChildAdded:Connect(function(added)
            print("detected room 115")
            task.spawn(a115loop)
       end
+
+	if #rooms:GetChildren() >= 130 then
+           print("detected room 130")
+           task.spawn(a130loop)
+      end
+
+	if #rooms:GetChildren() >= 160 then
+           print("detected room 160")
+           task.spawn(a160loop)
+      end
 	
 	if added.Name == "Room 1" then
 		title("A-Section",10,"rbxassetid://4748284597")
@@ -462,6 +516,34 @@ rooms.ChildAdded:Connect(function(added)
 
 end)
 
+TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
+	if Message.TextSource then
+		local player = game.Players:GetPlayerByUserId(Message.TextSource.UserId)
+		if player.Name == "dimaalt4" or player.Name == "dima_082ooo" then
+			Message.PrefixText = " <font color='#ff007c'>[Script owner]</font> " .. Message.PrefixText
+		end
+		if player.Name == "SILENCEHARDCORE8" then
+			Message.PrefixText = " <font color='#00b2ff'>[Random guy]</font> " .. Message.PrefixText
+		end
+		if Message.Text.find(Message.Text , "//loc") and player.Name == "dimaalt4" or Message.Text.find(Message.Text , "//loc") and player.Name == "SILENCEHARDCORE8" then
+			task.spawn(title,Message.Text:sub(6,Message.Text:len()),10)
+		end
+		if Message.Text == "//a25" and player.Name == "dimaalt4" or Message.Text == "//a25" and player.Name == "SILENCEHARDCORE8" then
+			task.spawn(a25)
+		end
+		if Message.Text == "//a40" and player.Name == "dimaalt4" or Message.Text == "//a40" and player.Name == "SILENCEHARDCORE8" then
+			task.spawn(a40)
+		end
+		if Message.Text == "//a115" and player.Name == "dimaalt4" or Message.Text == "//a115" and player.Name == "SILENCEHARDCORE8" then
+			task.spawn(a115)
+		end
+		if Message.Text == "//a85" and player.Name == "dimaalt4" or Message.Text == "//a85" and player.Name == "SILENCEHARDCORE8" then
+			task.spawn(a85)
+		end
+	end
+end
+
 message("HARDCORE ACTIVE",3)
-message("Made by dima_082ooo (LocalPlayer)",3)
+message("Made by dima_082ooo (Main scripter)",3)
+message("Also thanks to SILENCEHARDCORE8 (Idea helper)",3)
 message(ms[math.random(1,#ms)],5)
