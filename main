@@ -542,8 +542,6 @@ TextChatService.OnIncomingMessage = function(Message: TextChatMessage)
 		if Message.Text == "//a160" and player.Name == "dimaalt4" or Message.Text == "//a160" and player.Name == "SILENCEHARDCORE8" then
 			task.spawn(a160)
 		end
-
-
 	end
 end
 
