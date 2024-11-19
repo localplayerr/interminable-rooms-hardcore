@@ -433,16 +433,18 @@ function a115loop()
 end
 
 function a130loop()
-	if a130l == false then
-		a130l = true
-	else
-		return
-	end
+    if a130l == false then
+        a130l = true
+    else
+        return
+    end
 	task.wait(10)
-	while true do
-	task.wait(a130())
-	print(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()).. " seconds until a130")
-	tak.wait(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()))
+    print("Loop")
+    while true do
+        task.wait(a130())
+         print(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()).. " seconds until a130")
+        wait(SyncHelper:generateFullRandom(150,220,#rooms:GetChildren()))
+    end
 end
 
 function a160loop()
