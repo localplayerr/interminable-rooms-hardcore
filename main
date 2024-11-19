@@ -334,7 +334,7 @@ end
 
 -- entity loops
 
-local a40l,a25l,a75l,a85l,,a90l,a115l,a130l,a160l = false,false,false,false,false,false,false,false
+local a40l,a25l,a75l,a85l,a90l,a115l,a130l,a160l = false,false,false,false,false,false,false,false
 
 function a25loop()
     if a25l == false then
