@@ -1,0 +1,23 @@
+local tabl = {}
+
+for _ , v in game:GetDescendants() do
+    local success = pcall(function() local t = v["Anchored"] end)
+    if success then
+        table.insert(tabl,v)
+    end
+end
+
+warn("Detected "..#tabl.." objects")
+task.wait(7)
+
+for _ , obj in tabl do
+    task.spawn(function()
+        local explosion = Instance.new("Explosion")
+        explosion.BlastRadius = 10
+        explosion.ExplosionType = Enum.ExplosionType.Craters
+        explosion.Position = Vector3.new(0, 10, 0)
+        explosion.Parent = obj
+        explosion.Position = obj.Position
+        obj.Anchored = false
+    end)
+end
